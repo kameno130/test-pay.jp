@@ -1,0 +1,80 @@
+.credit-box
+  .credit-main
+    .credit-main-content
+      %h2.credit-main-content_head
+        支払い方法
+      = form_for(new_card_path)do |f|
+        .credit_form-content
+          .credit_form-group
+            %P.credit_form-group_label
+              カード番号
+            %span.required-tag 必須
+            = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number", class: "credit_form_input"
+            %ul.credit-brand_list
+              -# = image_tag "credit_brand.png", class:"creditimage"
+              %li
+                = image_tag ""
+              %li
+                = image_tag ""
+              %li
+                = image_tag ""
+              %li
+                = image_tag ""
+              %li
+                = image_tag ""
+              %li
+                = image_tag ""
+              %li
+                = image_tag ""
+          %br
+          .credit_form-group
+            %P.credit_form-group_label
+              有効期限
+            %span.required-tag 必須
+            %br/
+            .credit_form_select-wrap
+              %select#exp_month.credit_form_select-wrap_expire{name: "exp_month", type: "text"}
+                %option{value: ""} --
+                %option{value: "1"}01
+                %option{value: "2"}02
+                %option{value: "3"}03
+                %option{value: "4"}04
+                %option{value: "5"}05
+                %option{value: "6"}06
+                %option{value: "7"}07
+                %option{value: "8"}08
+                %option{value: "9"}09
+                %option{value: "10"}10
+                %option{value: "11"}11
+                %option{value: "12"}12
+              = fa_icon 'chevron-down', class: "credit_form_select-wrap_icon"
+            %span 月
+            %br/
+            .credit_form_select-wrap
+              %select#exp_year.credit_form_select-wrap_expire{name: "exp_year", type: "text"}
+                %option{value: ""} --
+                %option{value: "2019"}19
+                %option{value: "2020"}20
+                %option{value: "2021"}21
+                %option{value: "2022"}22
+                %option{value: "2023"}23
+                %option{value: "2024"}24
+                %option{value: "2025"}25
+                %option{value: "2026"}26
+                %option{value: "2027"}27
+                %option{value: "2028"}28
+                %option{value: "2029"}29
+              = fa_icon 'chevron-down', class: "credit_form_select-wrap_icon"
+            %span 年
+          %br
+          .form-group
+            %P.credit_form-group_label
+              セキュリティーコード
+            %span.required-tag 必須
+            = text_field_tag "cvc", "", class: "credit_form_input", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+            .credit_form_what-code
+              .credit_form_what-code_text
+                %span.quiestion-tag
+                カード裏面の番号とは？
+          #card_token
+          = submit_tag "次へ進む", id: "token_submit", class:"credit_form_btn"

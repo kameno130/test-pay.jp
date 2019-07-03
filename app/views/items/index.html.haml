@@ -1,0 +1,52 @@
+.single-main
+  .buy-item
+    .buy-item__head
+      購入内容の確認
+    .buy-item__main
+      .buy-item__main__contents
+        .buy-item__main__contents__image
+          = image_tag("https://static.mercdn.net/item/detail/orig/photos/m86124696873_1.jpg?1561620286", height: "250", width: "180")
+        .buy-item__main__contents__name
+          ジーパン
+        .buy-item__main__contents__price
+          ¥ 50000
+          .buy-item__main__contents__price__text
+            送料込み
+        %ul.buy-item__main__contents__point
+          %li.buy-item__main__contents__point__box
+            .buy-item__main__contents__point__box__name
+              ポイントはありません
+        %ul.buy-item__main__contents__total
+          %li.buy-item__main__contents__total__table
+            .buy-item__main__contents__total__table__text
+              支払い金額
+            .buy-item__main__contents__total__table__price
+              ¥ 400
+        = form_tag(action: :pay, method: :post) do
+          %script.payjp-button{"data-key" =>  Rails.application.credentials.pay_jp[:public_key], :src => "https://checkout.pay.jp", :type => "text/javascript"}
+
+    .buy-user-info
+      .buy-user-info__contents
+        配送先
+        .buy-user-info__contents__adress
+          〒111-1111
+          東京都　tech市camp町
+          1111-1
+          江楠波十男
+        = link_to "#", class: 'buy-user-info__contents__link' do
+          %span
+            変更する
+          %i.fa.fa-chevron-right
+    .buy-method
+      .buy-method__contents
+        支払い方法
+        .buy-method__contents__adress
+          '/'
+        = link_to "#", class: 'buy-method__contents__link' do
+          %span
+            変更する
+          %i.fa.fa-chevron-right
+
+
+= form_tag(action: :pay, method: :post) do
+  %script.payjp-button{"data-key" => "公開キー", :src => "https://checkout.pay.jp", :type => "text/javascript"}
